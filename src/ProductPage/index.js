@@ -63,7 +63,7 @@ const ProductDetailBlock = ({ discountPrice, retailPrice }) => {
 const ProductImageBlock = ({images}) => {
   return(
     <div className="panel col-centered col-12 col-lg-6">
-      {JSON.stringify(images)}
+      <img src={images[0].src} />
     </div>
   )
 }
@@ -80,13 +80,14 @@ const ShoppingCartBlock = ({}) => {
   )
 }
 
-
 const ProductPage = (props) => {
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState({})
 
   useEffect(() => {
+    console.log(props)
     setProduct(props)
   },[])
+
 
   return(
     <div className="dev row">

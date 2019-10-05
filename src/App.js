@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ProductPage from './ProductPage'
 import img1 from './ath-msr7-black.jpg'
 import img2 from './ath-msr7-brown.jpg'
@@ -18,11 +18,7 @@ const data = {
 
 
 const App = () => {
-  const [product, setProduct] = useState()
-
-  useEffect(() => {
-    setProduct(data)
-  },[]) /* second parameter *empty array* means useEffect will run only on componentDidMount*/
+  const [product, setProduct] = useState(data)
 
   return (    
     <ProductPage {...product}/>
