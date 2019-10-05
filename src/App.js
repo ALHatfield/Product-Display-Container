@@ -12,8 +12,8 @@ const data = {
   ],
   description: "this thing is great",
   details: "so many details",
-  discountPrice: 59.99,
-  retailPrice: 89.99,
+  discountPrice: 699.99,
+  retailPrice: 1299.99,
 }
 
 

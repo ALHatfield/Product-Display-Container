@@ -1,42 +1,71 @@
 import React, { useState, useEffect } from 'react'
 
 
-const ProductHeaderBlock = ({ name, awards }) => { 
-    return (
-      <div className="border-bottom-grey product-panel">
-        <div className="product-title">
-            <h1>{name}</h1>
-            <div className="product-title-award-text">{ awards }</div>
-        </div>
-        <ul className="nav nav-tabs">
-          <li className="product-nav-item nav-item active">
-            <div 
-              // onClick={() => props.handleTextChange("description")}
-            >
-              DESCRIPTION
-            </div>
-          </li>
-          <li className="product-nav-item nav-item">
-            <div 
-              // onClick={() => props.handleTextChange("details")}
-            >
-              DETAILS
-            </div>
-          </li>
-        </ul>
+const ProductTitleBlock = ({ name, awards }) => { 
+  return (
+    <div className="border-bottom-grey product-panel">
+      <div className="product-title">
+          <h1>{name}</h1>
+          <div className="product-title-award-text">{ awards }</div>
       </div>
-    )
-  }
+      <ul className="nav">
+        <li className="product-nav-item nav-item active">
+          <div 
+            // onClick={() => props.handleTextChange("description")}
+          >
+            DESCRIPTION
+          </div>
+        </li>
+        <li className="product-nav-item nav-item">
+          <div 
+            // onClick={() => props.handleTextChange("details")}
+          >
+            DETAILS
+          </div>
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+const ProductDetailBlock = ({ discountPrice, retailPrice }) => {
+  return(
+    <div className="border-bottom-grey product-panel">
+      <div className="product-text">
+      PRODUCT TEXT
+        {
+          // this.state.text === 'description'
+          //   ? this.renderDescription()
+          //   : this.renderDetails()
+        }
+      </div>
+      <div className="product-price">
+          <span className="discount-price">${ discountPrice }</span>
+          <span className="retail-price">${ retailPrice }</span>
+      </div>
+      <div>Colors</div>
+      <div className="dropdown show">
+        <a className="color-options-dropdown btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            BLUEEEE
+        </a>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          THINGSSSS
+        </div>
+      </div>
+    </div>
+  )
+}
+
 
 const ProductPage = (props) => {
-    
-    return(
-        <div className="container row">
-            <div className="panel border-right-grey col-centered col-12 col-lg-6">
-                <ProductHeaderBlock {...props} />
-            </div>
-        </div>
-    )
+  return(
+    <div className="dev row">
+      <div className="dev panel border-right-grey col-centered col-12 col-lg-6">
+        <ProductTitleBlock {...props} />
+        <ProductDetailBlock {...props} />
+      </div>
+    </div>
+  )
 }
 
 export default ProductPage
