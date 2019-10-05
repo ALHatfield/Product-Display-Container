@@ -4,6 +4,10 @@ import React, { useState, useEffect } from 'react'
 const ProductTitleBlock = ({ name, awards }) => { 
   return (
     <div className="border-bottom-grey product-panel">
+      <a href="#">
+        <span className="color-lg">&#8592;</span>
+        <span className="color-dg">All products</span>
+      </a>
       <div className="product-title">
           <h1>{name}</h1>
           <div className="product-title-award-text">{ awards }</div>
@@ -46,7 +50,7 @@ const ProductDetailBlock = ({ discountPrice, retailPrice }) => {
       <div>Colors</div>
       <div className="dropdown show">
         <a className="color-options-dropdown btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            BLUEEEE
+            ...
         </a>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
           THINGSSSS
@@ -56,13 +60,43 @@ const ProductDetailBlock = ({ discountPrice, retailPrice }) => {
   )
 }
 
+const ProductImageBlock = ({images}) => {
+  return(
+    <div className="panel col-centered col-12 col-lg-6">
+      {JSON.stringify(images)}
+    </div>
+  )
+}
+
+const ShoppingCartBlock = ({}) => {
+  return(
+    <div className="product-cart-block">
+      <div className="product-panel">
+        <button onClick={(e) => {}} className="cart-btn btn btn-primary">
+            ADD TO CART
+        </button>
+      </div>
+    </div>
+  )
+}
+
 
 const ProductPage = (props) => {
+  const [product, setProduct] = useState()
+
+  useEffect(() => {
+    setProduct(props)
+  },[])
+
   return(
     <div className="dev row">
       <div className="dev panel border-right-grey col-centered col-12 col-lg-6">
         <ProductTitleBlock {...props} />
         <ProductDetailBlock {...props} />
+        <ShoppingCartBlock />
+      </div>
+      <div onClick={() => console.log(product)} className="dev panel col-12 col-lg-6">
+        <ProductImageBlock {...props} />
       </div>
     </div>
   )
