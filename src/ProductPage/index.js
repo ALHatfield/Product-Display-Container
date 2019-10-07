@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 
-const ProductTitleBlock = ({ name, awards }) => { 
+const ProductTitleBlock = ({ name, awards, handleTextChange }) => { 
   return (
     <div className="border-bottom-grey product-panel">
       <a href="#">
@@ -15,14 +15,14 @@ const ProductTitleBlock = ({ name, awards }) => {
       <ul className="nav">
         <li className="product-nav-item nav-item active">
           <div 
-            // onClick={() => props.handleTextChange("description")}
+            onClick={() => handleTextChange("description")}
           >
             DESCRIPTION
           </div>
         </li>
         <li className="product-nav-item nav-item">
           <div 
-            // onClick={() => props.handleTextChange("details")}
+            onClick={() => handleTextChange("details")}
           >
             DETAILS
           </div>
@@ -60,10 +60,10 @@ const ProductDetailBlock = ({ discountPrice, retailPrice }) => {
   )
 }
 
-const ProductImageBlock = ({images}) => {
+const ProductImageBlock = ({ src }) => {
   return(
     <div className="panel col-centered col-12 col-lg-6">
-      <img src={images[0].src} />
+      <img src={ src } alt="image src not working" />
     </div>
   )
 }
@@ -80,24 +80,29 @@ const ShoppingCartBlock = ({}) => {
   )
 }
 
+
 const ProductPage = (props) => {
-  const [product, setProduct] = useState({})
+  const [image, setImage] = useState({})
 
   useEffect(() => {
-    console.log(props)
-    setProduct(props)
+    setImage(props.images[0])
   },[])
+
+  const handleTextChange = ( option ) => {
+    console.log(option)
+  }
+
 
 
   return(
     <div className="dev row">
       <div className="dev panel border-right-grey col-centered col-12 col-lg-6">
-        <ProductTitleBlock {...props} />
+        <ProductTitleBlock {...props} handleTextChange={handleTextChange} />
         <ProductDetailBlock {...props} />
         <ShoppingCartBlock />
       </div>
-      <div onClick={() => console.log(product)} className="dev panel col-12 col-lg-6">
-        <ProductImageBlock {...props} />
+      <div className="dev panel col-12 col-lg-6">
+        <ProductImageBlock {...image} />
       </div>
     </div>
   )
